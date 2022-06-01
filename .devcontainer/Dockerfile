@@ -24,4 +24,5 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 
 #Install libusb
 RUN apt-get update
+RUN apt install -y clang
 RUN apt-get install -y libusb-1.0-0-dev
