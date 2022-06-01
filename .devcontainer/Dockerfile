@@ -4,6 +4,8 @@
 ARG VARIANT="ubuntu-18.04"
 FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
 
+RUN apt-get -y update && apt-get install -y
+
 # [Optional] Install CMake version different from what base image has already installed. 
 # CMake reinstall choices: none, 3.21.5, 3.22.2, or versions from https://cmake.org/download/
 ARG REINSTALL_CMAKE_VERSION_FROM_SOURCE="none"
@@ -23,7 +25,5 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 #Install libusb
-RUN apt-get update
-RUN apt install -y build-essential
 RUN apt install -y clang
 RUN apt-get install -y libusb-1.0-0-dev
